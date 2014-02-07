@@ -1,0 +1,24 @@
+php mysql数据库
+
+$connect = mysql_connect($host,$user,$pass);
+数据库连接创建之后必须判断数据库连接是否创建成功，mysql_connect如果连接失败返回false,否则返回mysql link
+
+$connect = mysql_pconnect($host,$user,$pass,$cgiflag);
+建立持久连接，mysql_close()不能关闭由mysql_pconnect创建的链接，而且pconnect会事先寻找链接，如果有则直接返回
+
+$db = mysql_select_db($dbname);
+选择数据库,返回true or false
+
+mysql_query('SET NAMES UTF8',$connect);//设置当前连接的编码
+
+mysql_query得到结果集合result之后，获得结果:
+
+while($row = mysql_fetch_array($result)){
+	$row
+}
+这里的每个$row 是一个数组，就对应数据表中的一行，一数组形式，包括数字键值对以及列名称键值对
+
+while($row = mysql_fetch_field($result)){
+	$row
+}
+这里的每个$row是一个对象， 就对应数据表中的一行，一数组形式，包括数字键值对以及列名称键值对
